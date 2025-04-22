@@ -9,6 +9,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // Ajoutez cette ligne pour désactiver les indicateurs de développement
+  devIndicators: false,
 }
 
 export default nextConfig
