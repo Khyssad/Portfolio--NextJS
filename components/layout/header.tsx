@@ -1,3 +1,4 @@
+// components/layout/header.tsx
 "use client"
 
 import type React from "react"
@@ -10,11 +11,12 @@ import { Menu, X, Code } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { usePathname } from "next/navigation"
 
-// Navigation links
+// Navigation links - Added Blog
 const navItems = [
   { href: "#about", label: "À propos" },
   { href: "#projects", label: "Projets" },
   { href: "#skills", label: "Compétences" },
+  { href: "/blog", label: "Blog" },
   { href: "#contact", label: "Contact" },
 ]
 
@@ -32,8 +34,13 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  // Smooth scroll to section when clicking on nav links
+  // Determine if link is to a hash/section or a page
+  const isHashLink = (href: string) => href.startsWith('#')
+
+  // Smooth scroll to section when clicking on nav links with hash
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!isHashLink(href)) return
+    
     e.preventDefault()
     setIsOpen(false)
 
@@ -71,7 +78,7 @@ export default function Header() {
             <Link
               key={item.href}
               href={item.href}
-              onClick={(e) => scrollToSection(e, item.href)}
+              onClick={(e) => isHashLink(item.href) && scrollToSection(e, item.href)}
               className="text-sm font-medium transition-colors hover:text-primary"
             >
               {item.label}
@@ -97,7 +104,7 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                onClick={(e) => scrollToSection(e, item.href)}
+                onClick={(e) => isHashLink(item.href) && scrollToSection(e, item.href)}
                 className="text-sm font-medium transition-colors hover:text-primary px-2 py-1.5"
               >
                 {item.label}

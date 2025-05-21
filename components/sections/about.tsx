@@ -1,3 +1,4 @@
+// components/sections/about.tsx
 "use client"
 
 import { motion } from "framer-motion"
@@ -18,8 +19,7 @@ export default function About() {
           <div className="space-y-2">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">À propos de moi</h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Passionné par le développement web depuis plus de 5 ans, je crée des applications modernes et
-              performantes.
+              Développeur web passionné par les technologies numériques, je crée des applications modernes et performantes.
             </p>
           </div>
         </motion.div>
